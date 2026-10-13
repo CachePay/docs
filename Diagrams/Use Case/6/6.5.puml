@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Month-over-Month Comparison System (US 6.5)" {
+  usecase "View Month-over-Month\nComparison Report" as UC1
+  usecase "Display Side-by-Side\nMonthly Totals" as UC2
+  usecase "Display Percentage Change\nIndicator per Category" as UC3
+  usecase "Flag Category as Top Contributor\nto Spending Inflation" as UC4
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 <.. UC4 : <<extend>>\n[If category spending increased by more than 15%]
+@enduml

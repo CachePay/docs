@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+
+actor "User" as U
+actor "Budget Alert Engine" as S <<System>>
+
+rectangle "Custom Budget Threshold System (US 5.19)" {
+  usecase "Customize Budget\nWarning Threshold" as UC1
+  usecase "Apply Threshold Globally" as UC2
+  usecase "Apply Threshold\nPer Category" as UC3
+  usecase "Monitor Category Spending\nvs. Configured Threshold" as UC4
+  usecase "Dispatch Approaching-Limit\nAlert" as UC5
+}
+
+U --> UC1
+UC1 <.. UC2 : <<extend>>\n[If threshold is set for all categories]
+UC1 <.. UC3 : <<extend>>\n[If threshold is set for a specific category]
+
+S --> UC4
+UC4 <.. UC5 : <<extend>>\n[If spending crosses the configured percentage]
+@enduml

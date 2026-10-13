@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "AI Narrative Summarization System (US 7.3)" {
+  usecase "View Periodic Financial\nDigest (Weekly / Monthly)" as UC1
+  usecase "Process Quantitative Tables\nvia Cloud LLM API" as UC2
+  usecase "Display Concise Narrative\nSummary at Top of Report" as UC3
+  usecase "Render Summary in\nEgyptian Arabic" as UC4
+  usecase "Render Summary in\nEnglish" as UC5
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC3 <.. UC4 : <<extend>>\n[If app language is Arabic]
+UC3 <.. UC5 : <<extend>>\n[If app language is English]
+@enduml

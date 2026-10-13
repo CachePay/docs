@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+
+actor "User" as U
+actor "Notification Engine" as S <<System>>
+
+rectangle "Multi-Channel Notification System (US 5.14)" {
+  usecase "Open Notification Center" as UC1
+  usecase "View Unread Notifications" as UC2
+  usecase "Mark as Read" as UC3
+  usecase "Filter by Priority" as UC4
+  usecase "Navigate to Related\nTransaction or Budget Item" as UC5
+  usecase "Dispatch Triggered\nNotification" as UC6
+  usecase "Send Mobile System\nPush Notification" as UC7
+  usecase "Log Unread Item in\nNotification Center" as UC8
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 <.. UC3 : <<extend>>\n[If user marks a notification as read]
+UC1 <.. UC4 : <<extend>>\n[If user filters the list by priority]
+UC1 <.. UC5 : <<extend>>\n[If user taps a notification]
+
+S --> UC6
+UC6 ..> UC7 : <<include>>
+UC6 ..> UC8 : <<include>>
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Category Spending Breakdown System (US 6.2)" {
+  usecase "View Category\nBreakdown Report" as UC1
+  usecase "Render Interactive\nPie or Bar Chart" as UC2
+  usecase "Display Percentage & Total\nAmount per Category" as UC3
+  usecase "Drill Down into Sub-Categories\n& Itemized Transactions" as UC4
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 <.. UC4 : <<extend>>\n[If user taps a category slice]
+@enduml

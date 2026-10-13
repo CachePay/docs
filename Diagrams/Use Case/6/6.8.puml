@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Unusual Activity Report System (US 6.8)" {
+  usecase "View Unusual\nActivity Report" as UC1
+  usecase "Detect Deviation from Historical\nCategory Spending Pattern" as UC2
+  usecase "Display Flagged Transaction\nwith Flag Reason" as UC3
+  usecase "Confirm Transaction\nas Normal" as UC4
+  usecase "Flag Transaction for\nBank Inquiry" as UC5
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 <.. UC4 : <<extend>>\n[If user recognizes the transaction]
+UC1 <.. UC5 : <<extend>>\n[If user suspects an error or fraud]
+@enduml

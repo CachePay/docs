@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Installment Ledger System (US 9.1)" {
+  usecase "Add Zero-Interest\nInstallment Plan" as UC1
+  usecase "Define Installment\nDuration" as UC2
+  usecase "Define Admin\nProcessing Fees" as UC3
+  usecase "Calculate Exact Monthly\nDebt Obligation" as UC4
+  usecase "Display True Cost in\nInstallment Ledger" as UC5
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 ..> UC4 : <<include>>
+UC4 ..> UC5 : <<include>>
+@enduml

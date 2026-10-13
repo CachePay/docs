@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Report Export System (US 6.10)" {
+  usecase "Export Financial Report" as UC1
+  usecase "Choose Export Format\n(PDF or CSV)" as UC2
+  usecase "Generate & Download\nFormatted File" as UC3
+  usecase "Include Charts, Summary\nStatistics & Itemized Data" as UC4
+  usecase "Add Branded Headers, Date Range Metadata\n& High-Resolution Chart Snapshots" as UC5
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC3 ..> UC4 : <<include>>
+UC3 <.. UC5 : <<extend>>\n[If PDF format is selected]
+@enduml

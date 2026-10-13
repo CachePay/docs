@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor "User" as U
+actor "Notification Engine" as S <<System>>
+
+rectangle "Daily Notification Rate Limiting System (US 5.17)" {
+  usecase "View Suppressed Alerts\nin In-App Inbox" as UC1
+  usecase "Check Daily Non-Critical\nAlert Count" as UC2
+  usecase "Suppress Push & Route\nto In-App Inbox" as UC3
+  usecase "Bypass Daily Rate Limit &\nDeliver Unconditionally" as UC4
+}
+
+U --> UC1
+
+S --> UC2
+UC2 <.. UC3 : <<extend>>\n[If 3 non-critical pushes were already sent in the last 24 hours]
+UC2 <.. UC4 : <<extend>>\n[If alert is critical (fraud or debt due)]
+@enduml

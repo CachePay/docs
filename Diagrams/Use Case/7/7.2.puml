@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+actor "User" as U
+actor "Budgeting Agent" as S <<System>>
+
+rectangle "Agent Authorization System (US 7.2)" {
+  usecase "Interact with Proposed\nAction Card" as UC1
+  usecase "Execute Explicit\nApproval" as UC2
+  usecase "Mutate Budget\nParameters" as UC3
+  usecase "Dismiss Recommendation\nWithout Mutating" as UC4
+  usecase "Propose Limit\nRe-allocation" as UC5
+  usecase "Present 1-Tap\nAction Card" as UC6
+}
+
+U --> UC1
+UC1 <.. UC2 : <<extend>>\n[If user taps Approve]
+UC2 ..> UC3 : <<include>>
+UC1 <.. UC4 : <<extend>>\n[If user taps Dismiss]
+
+S --> UC5
+UC5 ..> UC6 : <<include>>
+@enduml

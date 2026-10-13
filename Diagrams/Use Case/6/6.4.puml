@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Savings Goal Progress Report System (US 6.4)" {
+  usecase "View Savings\nGoals Report" as UC1
+  usecase "Display Saved Amount &\nPercentage Completed" as UC2
+  usecase "Project Completion Date from\nCurrent Saving Rate" as UC3
+  usecase "Plot Pacing Trajectory Chart\n(Actual vs. Baseline Target)" as UC4
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 <.. UC4 : <<extend>>\n[If historical contributions exist]
+@enduml

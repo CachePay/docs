@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Budget vs. Actual Spending Report System (US 6.3)" {
+  usecase "View Budget vs.\nActual Report" as UC1
+  usecase "Display Budgeted, Actual\n& Variance Amounts" as UC2
+  usecase "Render Color-Coded\nProgress Bar" as UC3
+  usecase "Highlight Overage in Red\nwith Alert Indicator" as UC4
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 <.. UC4 : <<extend>>\n[If a category is overspent]
+@enduml

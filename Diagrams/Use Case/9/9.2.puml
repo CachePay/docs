@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Bank Rewards Calculator System (US 9.2)" {
+  usecase "View Installment\nNet Benefit" as UC1
+  usecase "Apply Pre-Configured\nBank Rewards Template" as UC2
+  usecase "Calculate Accrued Cashback\n& Reward Points" as UC3
+  usecase "Compare Points Against\nTotal Interest Overhead" as UC4
+  usecase "Display Net Benefit" as UC5
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC2 ..> UC3 : <<include>>
+UC1 ..> UC4 : <<include>>
+UC1 ..> UC5 : <<include>>
+@enduml

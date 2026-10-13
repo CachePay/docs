@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+
+actor "User" as U
+actor "Debt Risk Agent" as S <<System>>
+
+rectangle "Debt Optimization System (US 9.3)" {
+  usecase "View Prioritized Debt\nPayoff Action Plan" as UC1
+  usecase "Run Debt Optimization\nAlgorithm" as UC2
+  usecase "Generate Prioritized\nAction Plan" as UC3
+  usecase "Rank as Tier 1\n(Urgent Grace-Period Debt)" as UC4
+  usecase "Rank as Tier 2\n(Avalanche Method)" as UC5
+}
+
+U --> UC1
+
+S --> UC2
+UC2 ..> UC3 : <<include>>
+UC2 <.. UC4 : <<extend>>\n[If debt has an urgent grace-period deadline]
+UC2 <.. UC5 : <<extend>>\n[If debt is a high-interest obligation]
+@enduml

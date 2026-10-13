@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Cash Flow & Net Savings Report System (US 6.1)" {
+  usecase "View Income vs.\nExpense Report" as UC1
+  usecase "Select Report Period" as UC2
+  usecase "Render Inflows vs. Outflows\nTime-Series Chart" as UC3
+  usecase "Display Net Savings Figure\n(Income - Expense)" as UC4
+  usecase "Display Net Savings\nRate Percentage" as UC5
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC3 ..> UC4 : <<include>>
+UC3 ..> UC5 : <<include>>
+@enduml

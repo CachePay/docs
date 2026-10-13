@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Top Merchants & Largest Transactions System (US 6.7)" {
+  usecase "View Top Merchants &\nLargest Transactions Report" as UC1
+  usecase "Rank Merchants by\nTotal Spend" as UC2
+  usecase "List Top 10 Largest\nIndividual Transactions" as UC3
+  usecase "Filter & Display Transactions\nfor Selected Merchant" as UC4
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 <.. UC4 : <<extend>>\n[If user taps a merchant in the list]
+@enduml

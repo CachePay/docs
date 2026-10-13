@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "AI Assistant System (US 6.9)" {
+  usecase "Submit Financial Query\n(Text or Voice)" as UC1
+  usecase "Parse Intent, Entity,\n& Timeframe" as UC2
+  usecase "Fetch Exact Figure\nfrom Transaction Data" as UC3
+  usecase "Return Natural-Language\nAnswer" as UC4
+  usecase "Generate Comparative\nTable & Chart" as UC5
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 ..> UC4 : <<include>>
+UC1 <.. UC5 : <<extend>>\n[If query involves comparisons]
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+actor "User" as U
+actor "Reporting Engine" as S <<System>>
+
+rectangle "Monthly Financial Report System (US 5.13)" {
+  usecase "View Monthly\nFinancial Report" as UC1
+  usecase "Display Net Savings &\nCash Flow Charts" as UC2
+  usecase "Display Category\nBreakdowns" as UC3
+  usecase "Export Monthly Report" as UC4
+  usecase "Finalize Monthly\nFinancial Report" as UC5
+  usecase "Dispatch Monthly Report\nNotification" as UC6
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 <.. UC4 : <<extend>>\n[If user taps an export button]
+
+S --> UC5
+UC5 <.. UC6 : <<extend>>\n[If the monthly billing or calendar cycle has ended]
+@enduml

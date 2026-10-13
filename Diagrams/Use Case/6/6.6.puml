@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor "User" as U
+
+rectangle "Subscription Detection Report System (US 6.6)" {
+  usecase "View Subscriptions\nReport" as UC1
+  usecase "Analyze History for Repeating\nMerchant Charges" as UC2
+  usecase "List Recurring Payments with\nFrequency & Annual Cost" as UC3
+  usecase "Aggregate Cumulative Yearly\nSubscription Liability" as UC4
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC3 ..> UC4 : <<include>>
+@enduml

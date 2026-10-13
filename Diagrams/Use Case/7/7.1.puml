@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+actor "User" as U
+actor "Supervisor Agent" as S <<System>>
+
+rectangle "Multi-Agent Financial Query System (US 7.1)" {
+  usecase "Submit Free-Form\nFinancial Query" as UC1
+  usecase "View Synthesized Written\nExplanation & Charts" as UC2
+  usecase "Decompose Complex\nRequest" as UC3
+  usecase "Delegate to Specialized\nAgents" as UC4
+  usecase "Calculate Cash Flow\n& Feasibility" as UC5
+  usecase "Synthesize Final\nResponse" as UC6
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+
+S --> UC3
+UC3 ..> UC4 : <<include>>
+UC4 ..> UC5 : <<include>>
+UC3 ..> UC6 : <<include>>
+@enduml

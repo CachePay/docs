@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+actor "User" as U
+actor "Notification Engine" as S <<System>>
+
+rectangle "Critical Alert DND Bypass System (US 5.16)" {
+  usecase "View Critical Alert" as UC1
+  usecase "Display Urgent Red Badge\n(Critical Priority)" as UC2
+  usecase "Evaluate Triggered\nAlert Priority" as UC3
+  usecase "Bypass Do-Not-Disturb\nMute Filter" as UC4
+  usecase "Sound Immediately\nwith High Priority" as UC5
+  usecase "Tag Alert with\nUrgent Red Badge" as UC6
+}
+
+U --> UC1
+UC1 ..> UC2 : <<include>>
+
+S --> UC3
+UC3 <.. UC4 : <<extend>>\n[If quiet hours are active and alert is a debt deadline\nwithin 24 hours or a high-confidence fraud/anomaly]
+UC4 ..> UC5 : <<include>>
+UC4 ..> UC6 : <<include>>
+@enduml
